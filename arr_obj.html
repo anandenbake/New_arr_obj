@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta charset="utf-8"/>
+</head>
+<body>
+ 
+     
+
+	     <form id="frm1">
+		  Name:<br>
+		  <input type="text" name="name" id="name" >
+		  <br>
+		  Age:<br>
+		  <input type="text" name="age" id="age" >
+		  <br><br>
+	     <input type="button" id = "btn" value="Submit">
+
+	   </form> 
+           <hr></hr>
+           <hr></hr>
+         <div id="student">
+
+         </div>
+
+    <script>
+    
+	    var students = [
+		       {
+			      name: "Ravi",
+				  age:  22
+			   }, 
+			   {
+			       name: "Alok",
+				   age: 32
+			   },
+			   {
+			        name: "Shiva",
+					age: 19
+			   },
+			   {
+			        name: "Rohit",
+					age: 44
+			   }
+		]
+		
+		   for(i = 0; i < students.length; i++){
+
+		      $("#student").append('<div class="student"> <br>'+students[i].name+' </br>'+ students[i].age +'</br> <button  onClick="delete_student(this)"> Delete</button> </div>');
+		     
+
+
+		   }
+
+             function delete_student(el){
+                jQuery(el).closest('div').hide();
+                 	    	}
+                     $(document).ready(function(){
+                 	    $("#btn").click(function()
+                                       {
+
+                 	    	 $("#student").append( '<div class="student"><br>'+$("#name").val()+'</br>'+ $("#age").val() +'</br><button  onClick="delete_student(this)"> Delete</button> </div>');
+
+									
+                                   	students.push({
+						name: $("#name").val(),
+				  		age:  $("#age").val()
+					});
+                                   
+                                   	var myJsonString2 = JSON.stringify(students);
+
+				  	console.log(myJsonString2 );
+
+
+		});
+    	
+         });   
+
+			  var myJsonString = JSON.stringify(students);
+
+				  console.log(myJsonString );
+
+            
+
+			
+ </script>       
+       
+
+ </body>
+</html>
+
